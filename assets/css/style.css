@@ -167,6 +167,12 @@ main.container {
   border-radius: var(--radius);
   padding: 2rem;
   max-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-repos {
+  max-width: 600px;
 }
 
 .modal-content h2 {
@@ -215,6 +221,138 @@ main.container {
 
 .contact-info a:hover {
   color: var(--accent);
+}
+
+.repos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.repo-item {
+  padding: 1rem;
+  border: 1px solid var(--surface-strong);
+  border-radius: 12px;
+  background: var(--surface);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.repo-item.repo-pages {
+  border-color: var(--accent);
+  background: rgba(246, 200, 110, 0.05);
+}
+
+.repo-item:hover {
+  border-color: var(--accent-strong);
+  transform: translateX(4px);
+}
+
+.repo-item h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.repo-item h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-weight: 600;
+}
+
+.repo-item h4 a {
+  color: var(--accent-strong);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.repo-item h4 a:hover {
+  color: var(--accent);
+}
+
+.section-title {
+  font-size: 1.1rem;
+  color: var(--accent-strong);
+  margin: 1.5rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--surface-strong);
+}
+
+.section-title:first-child {
+  margin-top: 0;
+}
+
+.pages-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: var(--accent-strong);
+  color: #0c0c0c;
+  font-weight: 600;
+}
+
+.live-link {
+  color: var(--accent-strong) !important;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.live-link:hover {
+  color: var(--accent) !important;
+}
+
+.repo-item h3 a {
+  color: var(--accent-strong);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.repo-item h3 a:hover {
+  color: var(--accent);
+}
+
+.repo-item p {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.repo-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  align-items: center;
+}
+
+.repo-language {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.language-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.loading {
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem;
 }
 
 .nav {

@@ -1,5 +1,5 @@
 (function () {
-  // Modal controls
+  // Contact Modal controls
   const contactBtn = document.getElementById('contact-btn');
   const contactModal = document.getElementById('contact-modal');
   const modalClose = document.getElementById('modal-close');
@@ -16,6 +16,68 @@
     contactModal.addEventListener('click', (e) => {
       if (e.target === contactModal) {
         contactModal.classList.remove('active');
+      }
+    });
+  }
+
+  // Repos Modal controls
+  const reposBtn = document.getElementById('repos-btn');
+  const reposModal = document.getElementById('repos-modal');
+  const reposClose = document.getElementById('repos-close');
+  const reposList = document.getElementById('repos-list');
+
+  async function fetchRepos() {
+    try {
+      const response = await fetch('https://api.github.com/users/jamescloud04/repos?sort=updated&per_page=100');
+      const repos = await response.json();
+      const validRepos = repos.filter(repo => !repo.fork);
+
+      const html = validRepos.slice(0, 20).map(repo => {
+        const pagesUrl = repo.homepage && repo.homepage.trim().length > 0
+          ? repo.homepage
+          : repo.has_pages
+            ? `https://${repo.owner.login}.github.io/${repo.name}`
+            : '';
+
+        const isPages = repo.has_pages || (pagesUrl && pagesUrl.includes('github.io'));
+
+        return `
+          <div class="repo-item ${isPages ? 'repo-pages' : ''}">
+            <h4>
+              <a href="${repo.html_url}" target="_blank" rel="noreferrer">${repo.name}</a>
+              ${isPages ? '<span class="pages-badge">Pages</span>' : ''}
+            </h4>
+            ${repo.description ? `<p>${repo.description}</p>` : ''}
+            <div class="repo-meta">
+              ${repo.language ? `<div class="repo-language"><span class="language-dot"></span>${repo.language}</div>` : ''}
+              ${repo.stargazers_count > 0 ? `<span>⭐ ${repo.stargazers_count}</span>` : ''}
+              ${isPages ? `<a href="${pagesUrl}" target="_blank" rel="noreferrer" class="live-link">🌐 Visit pages site</a>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      reposList.innerHTML = html || '<p class="loading">No repositories found</p>';
+    } catch (error) {
+      reposList.innerHTML = '<p class="loading">Failed to load repositories</p>';
+    }
+  }
+
+  if (reposBtn && reposModal && reposClose) {
+    reposBtn.addEventListener('click', () => {
+      reposModal.classList.add('active');
+      if (reposList.querySelector('.loading')) {
+        fetchRepos();
+      }
+    });
+
+    reposClose.addEventListener('click', () => {
+      reposModal.classList.remove('active');
+    });
+
+    reposModal.addEventListener('click', (e) => {
+      if (e.target === reposModal) {
+        reposModal.classList.remove('active');
       }
     });
   }

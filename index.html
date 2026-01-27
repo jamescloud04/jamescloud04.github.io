@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>James Cloud | Portfolio</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -41,10 +42,11 @@
       <div class="actions">
         <a class="btn ghost" href="jamescloud_resume.pdf" download>Resume</a>
         <button class="btn ghost" id="contact-btn">Contact</button>
+        <button class="btn ghost" id="repos-btn">Projects</button>
       </div>
       
       <section id="about" class="about-section">
-        <p>I am a student @ Arizona State University pursuing a Bachelors of Science in Computer Science.</p>
+        <p>I am a student @ Arizona State University pursuing a BS in Computer Science.</p>
       </section>
     </div>
   </main>
@@ -57,6 +59,16 @@
         <p><strong>Email:</strong> <a href="mailto:jcloud3004@gmail.com">jcloud3004@gmail.com</a></p>
         <p><strong>GitHub:</strong> <a href="https://github.com/jamescloud04" target="_blank" rel="noreferrer">jamescloud04</a></p>
         <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/james-cloud" target="_blank" rel="noreferrer">james-cloud</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="repos-modal">
+    <div class="modal-content modal-repos">
+      <button class="modal-close" id="repos-close">×</button>
+      <h2>My Projects</h2>
+      <div id="repos-list" class="repos-list">
+        <p class="loading">Loading repositories...</p>
       </div>
     </div>
   </div>

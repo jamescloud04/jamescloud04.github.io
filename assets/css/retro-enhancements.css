@@ -276,43 +276,9 @@
 /* XP/Vista window chrome */
 
 /* Retro button styling enhancements */
-.actions {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
-/* Button hover effects removed per request */
 
-/* Add retro animated glow to social links */
-.social-links a {
-  transition: none;
-  animation: none;
-  background: linear-gradient(180deg, #f5f5f5 0%, #e0e0e0 100%);
-  border: 2px solid;
-  border-color: #dfdfdf #808080 #808080 #dfdfdf;
-  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.8);
-}
 
-.social-links a:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.social-links a:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-.social-links a:hover {
-  filter: none;
-}
-
-/* Subtitle with typewriter-like styling */
-.subtitle {
-  animation: subtitleFade 3s ease-in-out infinite;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
 
 /* About section with retro styling */
 .about-section {
@@ -326,24 +292,9 @@
 }
 
 /* Retro progress bar animation */
-@keyframes glitch {
-  0%, 100% { text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2), -1px -1px 0 rgba(255, 255, 255, 0.5); }
-  50% { text-shadow: -2px 2px 0 rgba(0, 100, 150, 0.3), 1px -1px 0 rgba(255, 255, 255, 0.5); }
-}
-
 @keyframes titleGlow {
   0%, 100% { filter: drop-shadow(0 0 0px rgba(0, 100, 150, 0)); }
   50% { filter: drop-shadow(0 0 8px rgba(0, 100, 150, 0.4)); }
-}
-
-@keyframes socialBounce {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-4px); }
-}
-
-@keyframes subtitleFade {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
 }
 
 @keyframes crtFlicker {
@@ -380,57 +331,10 @@ h2, h3, h4 {
   20%, 24%, 55% { opacity: 0.95; }
 }
 
-/* Retro link styling */
-.link {
-  position: relative;
-  text-decoration: underline;
-  animation: linkShine 3s ease-in-out infinite;
-}
 
-@keyframes linkShine {
-  0%, 100% { color: #0a246a; }
-  50% { color: #1f5ba8; text-shadow: 0 0 6px rgba(0, 100, 150, 0.4); }
-}
 
 /* Modal enhancements */
-.modal-content {
-  animation: windowAppear 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  resize: both;
-  overflow: auto;
-  min-width: 280px;
-  min-height: 200px;
-  position: relative;
-}
 
-
-.modal-content::before {
-  content: "Window";
-  position: absolute;
-  top: -18px;
-  left: 12px;
-  height: 20px;
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
-  font-size: 11px;
-  font-weight: 600;
-  color: #0a246a;
-  background: linear-gradient(180deg, #f5f5f5 0%, #dcdcdc 100%);
-  border: 2px solid;
-  border-color: #dfdfdf #808080 #808080 #dfdfdf;
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-@keyframes windowAppear {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 
 /* Adjust container for taskbar */
 main.container {

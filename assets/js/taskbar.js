@@ -25,7 +25,7 @@
         const isHidden = item.el.classList.contains("window-hidden");
         if (isMinimized || isHidden) {
           Desktop.openWindow(item.el);
-        } else if (item.id !== "portfolio") {
+        } else {
           Desktop.closeWindow(item.el);
           setActive("portfolio");
           return;

@@ -42,9 +42,11 @@
     closeWindow(windowEl) {
       if (!windowEl) return;
       windowEl.classList.add("window-hidden");
-      const portfolio = this.getWindow("portfolio");
-      if (portfolio && windowEl !== portfolio) {
-        portfolio.classList.remove("window-hidden", "window-minimized");
+      const anyVisible = this.getMainWindows().some(
+        (el) => !el.classList.contains("window-hidden") && !el.classList.contains("window-minimized")
+      );
+      if (!anyVisible) {
+        this.setActiveTaskbar(null);
       }
     },
     closeWindowById(id) {

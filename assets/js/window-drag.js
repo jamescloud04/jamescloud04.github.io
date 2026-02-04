@@ -32,11 +32,7 @@
       handle.addEventListener("mousedown", (event) => {
         if (event.button !== 0) return;
         const rect = windowEl.getBoundingClientRect();
-        windowEl.style.position = "fixed";
-        windowEl.style.margin = "0";
-        windowEl.style.left = `${rect.left}px`;
-        windowEl.style.top = `${rect.top}px`;
-        windowEl.style.transform = "none";
+        Desktop.setWindowFloating(windowEl, true);
         offsetX = event.clientX - rect.left;
         offsetY = event.clientY - rect.top;
         isDragging = true;

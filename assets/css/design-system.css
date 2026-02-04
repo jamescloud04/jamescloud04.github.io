@@ -13,16 +13,23 @@
 }
 
 .window-shell {
-  position: absolute;
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-self: start;
   border: 2px solid;
   border-color: var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
   background: var(--win-bg);
   box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.85), inset -2px -2px 0 rgba(0, 0, 0, 0.2), var(--win-shadow);
   border-radius: 4px;
-  resize: both;
+  resize: none;
   overflow: hidden;
+}
+
+.window-shell.window-floating {
+  resize: both;
+  min-width: 260px;
+  min-height: 180px;
 }
 
 .window-titlebar {

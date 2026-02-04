@@ -2,11 +2,11 @@
   const Desktop = window.Desktop;
 
   Desktop.onInit(() => {
-    const container = document.getElementById("taskbar-apps");
+    const container = Desktop.qs("#taskbar-apps");
     if (!container) return;
 
-    const windows = Array.from(document.querySelectorAll("[data-window]"))
-      .filter((el) => !el.classList.contains("widget"))
+    const windows = Desktop.getMainWindows()
+      .filter((el) => !el.dataset.noTaskbar)
       .map((el) => ({
         id: el.dataset.window,
         label: el.dataset.windowLabel || el.dataset.window,
@@ -25,8 +25,10 @@
         const isHidden = item.el.classList.contains("window-hidden");
         if (isMinimized || isHidden) {
           Desktop.openWindow(item.el);
-        } else {
-          item.el.classList.add("window-minimized");
+        } else if (item.id !== "portfolio") {
+          Desktop.closeWindow(item.el);
+          setActive("portfolio");
+          return;
         }
         if (item.el.id === "projects-window") {
           Desktop.ensureReposLoaded();
@@ -48,14 +50,12 @@
 
     windows.forEach((item) => {
       const btn = ensureButton(item);
-      const updateVisibility = () => {
-        const hidden = item.el.classList.contains("window-hidden");
-        btn.style.display = hidden ? "none" : "inline-flex";
-      };
-      updateVisibility();
-
-      const windowObserver = new MutationObserver(updateVisibility);
-      windowObserver.observe(item.el, { attributes: true, attributeFilter: ["class"] });
+      btn.style.display = "inline-flex";
     });
+
+    const initial = windows.find((item) => !item.el.classList.contains("window-hidden"));
+    if (initial) {
+      setActive(initial.id);
+    }
   });
 })();

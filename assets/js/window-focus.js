@@ -2,7 +2,7 @@
   const Desktop = window.Desktop;
 
   Desktop.onInit(() => {
-    const windows = Array.from(document.querySelectorAll(".window-shell"));
+    const windows = Desktop.getMainWindows();
     let zIndexCounter = windows.reduce((max, el) => {
       const current = Number.parseInt(window.getComputedStyle(el).zIndex, 10);
       return Number.isNaN(current) ? max : Math.max(max, current);

@@ -2,9 +2,9 @@
   const Desktop = window.Desktop;
 
   Desktop.onInit(() => {
-    const toggleBtn = document.getElementById("toggle-widgets");
-    const widgetsContainer = document.getElementById("widgets-container");
-    const startMenu = document.getElementById("start-menu");
+    const toggleBtn = Desktop.qs("#toggle-widgets");
+    const widgetsContainer = Desktop.qs("#widgets-container");
+    const startMenu = Desktop.qs("#start-menu");
 
     if (!toggleBtn || !widgetsContainer) return;
 

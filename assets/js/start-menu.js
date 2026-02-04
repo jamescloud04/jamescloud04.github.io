@@ -2,12 +2,12 @@
   const Desktop = window.Desktop;
 
   Desktop.onInit(() => {
-    const startButton = document.querySelector(".start-btn");
-    const startMenu = document.getElementById("start-menu");
-    const openPortfolioBtn = document.getElementById("start-open-portfolio");
-    const openProjectsBtn = document.getElementById("start-open-projects");
-    const openContactBtn = document.getElementById("start-open-contact");
-    const openResume = document.querySelector(".start-menu [href='jamescloud_resume.pdf']");
+    const startButton = Desktop.qs(".start-btn");
+    const startMenu = Desktop.qs("#start-menu");
+    const openPortfolioBtn = Desktop.qs("#start-open-portfolio");
+    const openProjectsBtn = Desktop.qs("#start-open-projects");
+    const openContactBtn = Desktop.qs("#start-open-contact");
+    const openResume = Desktop.qs(".start-menu [href='jamescloud_resume.pdf']");
     if (!startButton || !startMenu) return;
 
     const closeMenu = () => {
@@ -30,23 +30,20 @@
     openPortfolioBtn?.addEventListener("click", (event) => {
       event.preventDefault();
       closeMenu();
-      const portfolioWindow = document.querySelector(".content.window");
-      Desktop.openWindow(portfolioWindow);
+      Desktop.openWindowById("portfolio");
     });
 
     openProjectsBtn?.addEventListener("click", (event) => {
       event.preventDefault();
       closeMenu();
-      const projectsWindow = document.getElementById("projects-window");
-      Desktop.openWindow(projectsWindow);
+      Desktop.openWindowById("projects");
       Desktop.ensureReposLoaded();
     });
 
     openContactBtn?.addEventListener("click", (event) => {
       event.preventDefault();
       closeMenu();
-      const contactWin = document.getElementById("contact-window");
-      Desktop.openWindow(contactWin);
+      Desktop.openWindowById("contact");
     });
 
     openResume?.addEventListener("click", () => {

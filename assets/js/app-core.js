@@ -1,44 +1,54 @@
 (function () {
   const Desktop = {
     initCallbacks: [],
+    _windowMap: new Map(),
+    qs(selector, scope = document) {
+      return scope.querySelector(selector);
+    },
+    qsa(selector, scope = document) {
+      return Array.from(scope.querySelectorAll(selector));
+    },
     onInit(callback) {
       if (typeof callback === "function") {
         this.initCallbacks.push(callback);
       }
     },
-    getWindows() {
-      return Array.from(document.querySelectorAll(".window-shell"));
+    refreshWindows() {
+      this._windowMap = new Map();
+      this.qsa("[data-window]").forEach((el) => {
+        if (el.dataset.window) {
+          this._windowMap.set(el.dataset.window, el);
+        }
+      });
     },
-    setWindowFloating(windowEl, isFloating) {
-      if (!windowEl) return;
-      if (isFloating) {
-        const rect = windowEl.getBoundingClientRect();
-        windowEl.classList.add("window-floating");
-        windowEl.style.position = "fixed";
-        windowEl.style.margin = "0";
-        windowEl.style.width = `${rect.width}px`;
-        windowEl.style.height = `${rect.height}px`;
-        windowEl.style.left = `${rect.left}px`;
-        windowEl.style.top = `${rect.top}px`;
-        windowEl.style.transform = "none";
-      } else {
-        windowEl.classList.remove("window-floating");
-        windowEl.style.position = "";
-        windowEl.style.margin = "";
-        windowEl.style.width = "";
-        windowEl.style.height = "";
-        windowEl.style.left = "";
-        windowEl.style.top = "";
-        windowEl.style.transform = "";
-      }
+    getWindow(id) {
+      return this._windowMap.get(id) || null;
+    },
+    getMainWindows() {
+      return Array.from(this._windowMap.values()).filter((el) => !el.classList.contains("widget"));
     },
     openWindow(windowEl) {
       if (!windowEl) return;
+      this.getMainWindows().forEach((el) => {
+        if (el !== windowEl) {
+          el.classList.add("window-hidden");
+        }
+      });
       windowEl.classList.remove("window-hidden", "window-minimized");
+    },
+    openWindowById(id) {
+      this.openWindow(this.getWindow(id));
     },
     closeWindow(windowEl) {
       if (!windowEl) return;
       windowEl.classList.add("window-hidden");
+      const portfolio = this.getWindow("portfolio");
+      if (portfolio && windowEl !== portfolio) {
+        portfolio.classList.remove("window-hidden", "window-minimized");
+      }
+    },
+    closeWindowById(id) {
+      this.closeWindow(this.getWindow(id));
     },
     _setActiveTaskbar: null,
     setActiveTaskbar(id) {
@@ -55,6 +65,7 @@
   window.Desktop = Desktop;
 
   document.addEventListener("DOMContentLoaded", () => {
+    Desktop.refreshWindows();
     Desktop.initCallbacks.forEach((callback) => callback());
   });
 })();

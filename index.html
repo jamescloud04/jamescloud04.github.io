@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="assets/css/design-system.css" />
   <link rel="stylesheet" href="assets/css/retro-enhancements.css" />
 </head>
-<body>
+<body class="home-page">
   <div class="taskbar">
     <div class="taskbar-start">
       <button class="start-btn" title="Start Menu">
@@ -58,10 +58,6 @@
     <div class="content window window-shell" data-window="portfolio" data-window-label="Portfolio">
       <div class="window-titlebar">
         <span class="window-title">Portfolio</span>
-        <div class="window-actions">
-          <button class="window-action window-minimize" title="Minimize">–</button>
-          <button class="window-action modal-close" id="content-close" title="Close">×</button>
-        </div>
       </div>
       <div class="window-body">
         <div class="portfolio-header">
@@ -72,9 +68,6 @@
               <span>Lorem ipsum dolor sit amet.</span>
               <span>Consectetur adipiscing elit.</span>
               <span>Sed do eiusmod tempor.</span>
-            </div>
-            <div class="portfolio-cta">
-              <a class="btn ghost" href="jamescloud_resume.pdf" download>Resume</a>
             </div>
           </div>
         </div>
@@ -129,7 +122,61 @@
       </div>
     </div>
 
+    <section class="window window-resume window-shell window-hidden" id="resume-window" data-window="resume" data-window-label="Resume" data-no-taskbar="true">
+      <div class="window-titlebar">
+        <span class="window-title">Resume</span>
+        <div class="window-actions">
+          <button class="window-action window-minimize" title="Minimize">–</button>
+          <button class="window-action modal-close" id="resume-close" title="Close">×</button>
+        </div>
+      </div>
+      <div class="window-body">
+        <embed id="resume-embed" src="jamescloud_resume.pdf" type="application/pdf" style="width: 100%; height: 100%;" />
+      </div>
+    </section>
+
+    <section class="window window-projects window-shell window-hidden" id="projects-window" data-window="projects" data-window-label="Projects">
+      <div class="window-titlebar">
+        <span class="window-title">My Projects</span>
+        <div class="window-actions">
+          <button class="window-action window-minimize" title="Minimize">–</button>
+          <button class="window-action modal-close" id="projects-close" title="Close">×</button>
+        </div>
+      </div>
+      <div class="window-body">
+        <div id="repos-list" class="repos-list">
+          <p class="loading">Loading repositories...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="window window-contact window-shell window-hidden" id="contact-window" data-window="contact" data-window-label="Contact">
+      <div class="window-titlebar">
+        <span class="window-title">Get in Touch</span>
+        <div class="window-actions">
+          <button class="window-action window-minimize" title="Minimize">–</button>
+          <button class="window-action modal-close" id="contact-close" title="Close">×</button>
+        </div>
+      </div>
+      <div class="window-body">
+        <div class="contact-info">
+          <p><strong>Email:</strong> <span class="email-link" data-email="jcloud3004@gmail.com" title="Click to copy">jcloud3004 [at] gmail [dot] com</span></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/jamescloud04" target="_blank" rel="noreferrer">jamescloud04</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/james-cloud" target="_blank" rel="noreferrer">james-cloud</a></p>
+        </div>
+      </div>
+    </section>
+
     <aside class="widgets" id="widgets-container">
+      <div class="widget widget-resume window-shell widget-shell" data-window="resume-widget" data-window-label="Resume">
+        <div class="window-titlebar">
+          <span class="window-title">Resume</span>
+        </div>
+        <div class="window-body widget-body" style="display: flex; flex-direction: column; gap: 8px;">
+          <button id="view-resume-btn" class="btn ghost" style="flex: 1;">View PDF</button>
+          <a href="jamescloud_resume.pdf" class="btn ghost" download style="flex: 1; text-align: center; display: flex; align-items: center; justify-content: center; text-decoration: none;">Download</a>
+        </div>
+      </div>
       <div class="widget widget-clock window-shell widget-shell" data-window="clock" data-window-label="Clock">
         <div class="window-titlebar">
           <span class="window-title">System Clock</span>
@@ -137,26 +184,6 @@
         <div class="window-body widget-body">
           <div class="widget-time" id="widget-time">12:00 PM</div>
           <div class="widget-date" id="widget-date">Feb 4, 2026</div>
-        </div>
-      </div>
-      <div class="widget widget-notes window-shell widget-shell" data-window="notes" data-window-label="Notes">
-        <div class="window-titlebar">
-          <span class="window-title">Sticky Note</span>
-        </div>
-        <div class="window-body widget-body">
-          <ul>
-            <li>You so gangsta</li>
-          </ul>
-        </div>
-      </div>
-      <div class="widget widget-status window-shell widget-shell" data-window="status" data-window-label="Status">
-        <div class="window-titlebar">
-          <span class="window-title">System Status</span>
-        </div>
-        <div class="window-body widget-body">
-          <div class="status-row"><span>Uptime</span><span id="widget-uptime">00:00:00</span></div>
-          <div class="status-row"><span>Motion</span><span id="widget-motion">On</span></div>
-          <div class="status-row"><span>Theme</span><span>XP/Vista</span></div>
         </div>
       </div>
       <div class="widget widget-calendar window-shell widget-shell" data-window="calendar" data-window-label="Calendar">
@@ -179,50 +206,7 @@
           </div>
         </div>
       </div>
-      <div class="widget widget-sysinfo window-shell widget-shell" data-window="sysinfo" data-window-label="System">
-        <div class="window-titlebar">
-          <span class="window-title">System Info</span>
-        </div>
-        <div class="window-body widget-body">
-          <div class="status-row"><span>OS</span><span>Windows XP</span></div>
-          <div class="status-row"><span>RAM</span><span id="widget-ram">8 GB</span></div>
-          <div class="status-row"><span>CPU</span><span id="widget-cpu">Intel</span></div>
-          <div class="status-row"><span>Resolution</span><span id="widget-res">1920x1080</span></div>
-        </div>
-      </div>
     </aside>
-
-    <section class="window window-contact window-shell" id="contact-window" data-window="contact" data-window-label="Contact">
-      <div class="window-titlebar">
-        <span class="window-title">Get in Touch</span>
-        <div class="window-actions">
-          <button class="window-action window-minimize" title="Minimize">–</button>
-          <button class="window-action modal-close" id="contact-close" title="Close">×</button>
-        </div>
-      </div>
-      <div class="window-body">
-        <div class="contact-info">
-          <p><strong>Email:</strong> <a href="mailto:jcloud3004@gmail.com">jcloud3004@gmail.com</a></p>
-          <p><strong>GitHub:</strong> <a href="https://github.com/jamescloud04" target="_blank" rel="noreferrer">jamescloud04</a></p>
-          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/james-cloud" target="_blank" rel="noreferrer">james-cloud</a></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="window window-projects window-shell" id="projects-window" data-window="projects" data-window-label="Projects">
-      <div class="window-titlebar">
-        <span class="window-title">My Projects</span>
-        <div class="window-actions">
-          <button class="window-action window-minimize" title="Minimize">–</button>
-          <button class="window-action modal-close" id="projects-close" title="Close">×</button>
-        </div>
-      </div>
-      <div class="window-body">
-        <div id="repos-list" class="repos-list">
-          <p class="loading">Loading repositories...</p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <script src="assets/js/app-core.js"></script>
@@ -233,11 +217,11 @@
   <script src="assets/js/start-menu.js"></script>
   <script src="assets/js/taskbar.js"></script>
   <script src="assets/js/window-actions.js"></script>
-  <script src="assets/js/window-drag.js"></script>
   <script src="assets/js/window-focus.js"></script>
   <script src="assets/js/widgets.js"></script>
   <script src="assets/js/calendar.js"></script>
   <script src="assets/js/widgets-toggle.js"></script>
-  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/email-copy.js"></script>
+  <script src="assets/js/resume.js"></script>
 </body>
 </html>

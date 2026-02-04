@@ -1,11 +1,18 @@
 (function () {
-  const Desktop = window.Desktop;
+  const Desktop = window.Desktop || {
+    onInit: (callback) => document.addEventListener("DOMContentLoaded", callback),
+    ensureReposLoaded: () => {},
+    openWindow: () => {},
+    closeWindow: () => {},
+    qs: (selector, scope = document) => scope.querySelector(selector),
+    getWindow: () => null,
+  };
 
   Desktop.onInit(() => {
-    const reposBtn = document.getElementById("repos-btn");
-    const reposWindow = document.getElementById("projects-window");
-    const reposClose = document.getElementById("projects-close");
-    const reposList = document.getElementById("repos-list");
+    const reposBtn = Desktop.qs("#repos-btn");
+    const reposWindow = Desktop.getWindow("projects") || Desktop.qs("#projects-window");
+    const reposClose = Desktop.qs("#projects-close");
+    const reposList = Desktop.qs("#repos-list");
 
     const fetchRepos = async () => {
       try {
@@ -71,6 +78,10 @@
 
     if (reposWindow && !reposWindow.classList.contains("window-hidden")) {
       Desktop.ensureReposLoaded();
+    }
+
+    if (!reposWindow && reposList) {
+      fetchRepos();
     }
   });
 })();

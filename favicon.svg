@@ -1,5 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="14" fill="#0c111a"/>
-  <rect x="8" y="8" width="48" height="48" rx="12" fill="#0f1724" stroke="#1f2937" stroke-width="2"/>
-  <path d="M38 14h-6c-4.418 0-8 3.582-8 8v16c0 3.866 3.134 7 7 7 3.866 0 7-3.134 7-7 0-1.657-1.343-3-3-3s-3 1.343-3 3c0 0.552-0.448 1-1 1s-1-0.448-1-1V22c0-1.105 0.895-2 2-2h6c1.657 0 3-1.343 3-3s-1.343-3-3-3Z" fill="#f6c86e" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Retro Windows XP window icon -->
+  <!-- Outer beveled border (light) -->
+  <rect x="8" y="8" width="48" height="48" fill="#c0c0c0" stroke="#dfdfdf" stroke-width="2"/>
+  <!-- Inner beveled border (dark) -->
+  <rect x="10" y="10" width="44" height="44" fill="#0c0c5c"/>
+  <!-- Title bar gradient -->
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a246a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1084d7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="12" y="12" width="40" height="8" fill="url(#titleGrad)"/>
+  <!-- Title text (simple bar) -->
+  <rect x="12" y="20" width="40" height="28" fill="#c0c0c0"/>
+  <!-- Window content area with checkerboard pattern for retro feel -->
+  <rect x="14" y="22" width="8" height="8" fill="#0a246a"/>
+  <rect x="24" y="22" width="8" height="8" fill="#0a246a"/>
+  <rect x="34" y="22" width="8" height="8" fill="#0a246a"/>
+  <rect x="14" y="32" width="8" height="8" fill="#dfdfdf"/>
+  <rect x="24" y="32" width="8" height="8" fill="#0a246a"/>
+  <rect x="34" y="32" width="8" height="8" fill="#dfdfdf"/>
+  <rect x="14" y="42" width="8" height="4" fill="#0a246a"/>
+  <rect x="24" y="42" width="8" height="4" fill="#dfdfdf"/>
+  <rect x="34" y="42" width="8" height="4" fill="#0a246a"/>
+  <!-- Highlight lines for beveled effect -->
+  <line x1="10" y1="10" x2="52" y2="10" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+  <line x1="10" y1="10" x2="10" y2="52" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
+  <line x1="54" y1="8" x2="54" y2="54" stroke="#808080" stroke-width="1" opacity="0.8"/>
+  <line x1="8" y1="54" x2="54" y2="54" stroke="#808080" stroke-width="1" opacity="0.8"/>
 </svg>

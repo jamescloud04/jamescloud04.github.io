@@ -38,14 +38,18 @@
     </div>
     <div class="start-menu-body">
       <div class="start-menu-section">
+        <div class="start-section-title">Quick Access</div>
         <button class="start-item" id="start-open-portfolio">Portfolio</button>
         <button class="start-item" id="start-open-projects">Projects</button>
         <button class="start-item" id="start-open-contact">Contact</button>
       </div>
       <div class="start-menu-section">
-        <a href="jamescloud_resume.pdf" class="start-item" download>Resume</a>
-        <a href="https://github.com/jamescloud04" class="start-item" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://linkedin.com/in/james-cloud" class="start-item" target="_blank" rel="noreferrer">LinkedIn</a>
+        <div class="start-section-title">Resources</div>
+        <a href="jamescloud_resume.pdf" class="start-item" download>Download Resume</a>
+        <a href="https://github.com/jamescloud04" class="start-item" target="_blank" rel="noreferrer">View on GitHub</a>
+        <a href="https://linkedin.com/in/james-cloud" class="start-item" target="_blank" rel="noreferrer">Connect on LinkedIn</a>
+      </div>
+      <div class="start-menu-section">
         <button class="start-item" id="toggle-widgets">Hide Widgets</button>
       </div>
     </div>
@@ -56,121 +60,106 @@
 
   <main class="container">
     <div class="retro-3d" id="retro-3d" aria-hidden="true"></div>
-    <div class="content window window-shell" data-window="portfolio" data-window-label="Portfolio">
-      <div class="window-titlebar">
-        <span class="window-title">Portfolio</span>
-        <div class="window-actions">
-          <button class="window-action window-minimize" title="Minimize">–</button>
-          <button class="window-action modal-close" id="portfolio-close" title="Close">×</button>
+    <div class="main-column">
+      <div class="content window window-shell" data-window="portfolio" data-window-label="Portfolio" data-stack="true">
+        <div class="window-titlebar">
+          <span class="window-title">Portfolio</span>
+          <div class="window-actions">
+            <button class="window-action modal-close" id="portfolio-close" title="Close">×</button>
+          </div>
         </div>
-      </div>
-      <div class="window-body">
-        <div class="portfolio-header">
-          <div class="portfolio-intro">
-            <h1>James Cloud</h1>
-            <p class="subtitle">Software engineer</p>
-            <div class="portfolio-meta">
-              <span>Lorem ipsum dolor sit amet.</span>
-              <span>Consectetur adipiscing elit.</span>
-              <span>Sed do eiusmod tempor.</span>
+        <div class="window-body">
+          <div class="portfolio-layout">
+            <div class="portfolio-identity">
+              <div class="portfolio-header">
+                <div class="portfolio-badge" aria-hidden="true">JC</div>
+                <div class="portfolio-intro">
+                  <h1>James Cloud</h1>
+                  <p class="subtitle">Software engineer</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="portfolio-details">
+              <section id="about" class="about-section">
+                <p>Computer Science student @ Arizona State University</p>
+              </section>
+              <div class="portfolio-tiles">
+                <div class="tile-card">
+                  <div class="tile-label">Interests</div>
+                  <div class="tile-value">Networking</div>
+                  <div class="tile-meta">Protocols · Systems · Security</div>
+                </div>
+              </div>
+              <div class="portfolio-strip">
+                <span class="strip-chip">Based in Tempe, AZ</span>
+              </div>
+            </div>
+            
+            <div class="portfolio-sidebar">
+              <div class="xp-panel">
+                <h3>Common Tasks</h3>
+                <button class="xp-action" id="view-resume-cta">View Resume</button>
+              </div>
+              <div class="xp-divider"></div>
+              <div class="xp-panel">
+                <h3>Details</h3>
+                <div class="detail-item">
+                  <span class="detail-label">Education:</span>
+                  <span class="detail-value">ASU</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Focus:</span>
+                  <span class="detail-value">Web Dev</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        <section class="portfolio-stats">
-          <div class="stat-card">
-            <span class="stat-label">Focus</span>
-            <span class="stat-value">Lorem ipsum</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-label">Toolbox</span>
-            <span class="stat-value">Dolor sit amet</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-label">Interests</span>
-            <span class="stat-value">Consectetur elit</span>
-          </div>
-        </section>
-
-        <section id="about" class="about-section">
-          <h2 class="section-title">About</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </section>
-
-        <section class="portfolio-section">
-          <h2 class="section-title">Core Skills</h2>
-          <div class="skills-grid">
-            <span class="skill-pill">JavaScript</span>
-            <span class="skill-pill">TypeScript</span>
-            <span class="skill-pill">React</span>
-            <span class="skill-pill">Node.js</span>
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">REST APIs</span>
-            <span class="skill-pill">UI Systems</span>
-            <span class="skill-pill">Automation</span>
-          </div>
-        </section>
-
-        <section class="portfolio-section">
-          <h2 class="section-title">Highlights</h2>
-          <ul class="highlight-list">
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-            <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
-            <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</li>
-          </ul>
-        </section>
-
-        <section class="portfolio-section">
-          <h2 class="section-title">Availability</h2>
-          <p class="availability">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </section>
       </div>
+
+      <section class="window window-resume window-shell window-hidden" id="resume-window" data-window="resume" data-window-label="Resume" data-no-taskbar="true" data-stack="true">
+        <div class="window-titlebar">
+          <span class="window-title">Resume</span>
+          <div class="window-actions">
+            <button class="window-action modal-close" id="resume-close" title="Close">×</button>
+          </div>
+        </div>
+        <div class="window-body resume-body">
+          <embed id="resume-embed" src="jamescloud_resume.pdf" type="application/pdf" />
+        </div>
+      </section>
+
+      <section class="window window-contact window-shell" id="contact-window" data-window="contact" data-window-label="Contact" data-stack="true">
+        <div class="window-titlebar">
+          <span class="window-title">Get in Touch</span>
+          <div class="window-actions">
+            <button class="window-action modal-close" id="contact-close" title="Close">×</button>
+          </div>
+        </div>
+        <div class="window-body">
+          <div class="contact-info">
+            <p><strong>Email:</strong> <span class="email-link" data-email="jcloud3004@gmail.com" title="Click to copy">jcloud3004 [at] gmail [dot] com</span></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/jamescloud04" target="_blank" rel="noreferrer">jamescloud04</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/james-cloud" target="_blank" rel="noreferrer">james-cloud</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="window window-projects window-shell" id="projects-window" data-window="projects" data-window-label="Projects" data-stack="true">
+        <div class="window-titlebar">
+          <span class="window-title">My Projects</span>
+          <div class="window-actions">
+            <button class="window-action modal-close" id="projects-close" title="Close">×</button>
+          </div>
+        </div>
+        <div class="window-body">
+          <div id="repos-list" class="repos-list">
+            <p class="loading">Loading repositories...</p>
+          </div>
+        </div>
+      </section>
     </div>
-
-    <section class="window window-resume window-shell window-hidden" id="resume-window" data-window="resume" data-window-label="Resume" data-no-taskbar="true">
-      <div class="window-titlebar">
-        <span class="window-title">Resume</span>
-        <div class="window-actions">
-          <button class="window-action window-minimize" title="Minimize">–</button>
-          <button class="window-action modal-close" id="resume-close" title="Close">×</button>
-        </div>
-      </div>
-      <div class="window-body">
-        <embed id="resume-embed" src="jamescloud_resume.pdf" type="application/pdf" style="width: 100%; height: 100%;" />
-      </div>
-    </section>
-
-    <section class="window window-projects window-shell window-hidden" id="projects-window" data-window="projects" data-window-label="Projects">
-      <div class="window-titlebar">
-        <span class="window-title">My Projects</span>
-        <div class="window-actions">
-          <button class="window-action window-minimize" title="Minimize">–</button>
-          <button class="window-action modal-close" id="projects-close" title="Close">×</button>
-        </div>
-      </div>
-      <div class="window-body">
-        <div id="repos-list" class="repos-list">
-          <p class="loading">Loading repositories...</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="window window-contact window-shell window-hidden" id="contact-window" data-window="contact" data-window-label="Contact">
-      <div class="window-titlebar">
-        <span class="window-title">Get in Touch</span>
-        <div class="window-actions">
-          <button class="window-action window-minimize" title="Minimize">–</button>
-          <button class="window-action modal-close" id="contact-close" title="Close">×</button>
-        </div>
-      </div>
-      <div class="window-body">
-        <div class="contact-info">
-          <p><strong>Email:</strong> <span class="email-link" data-email="jcloud3004@gmail.com" title="Click to copy">jcloud3004 [at] gmail [dot] com</span></p>
-          <p><strong>GitHub:</strong> <a href="https://github.com/jamescloud04" target="_blank" rel="noreferrer">jamescloud04</a></p>
-          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/james-cloud" target="_blank" rel="noreferrer">james-cloud</a></p>
-        </div>
-      </div>
-    </section>
 
     <aside class="widgets" id="widgets-container">
       <div class="widget widget-clock window-shell widget-shell" data-window="clock" data-window-label="Clock">
@@ -202,12 +191,21 @@
           </div>
         </div>
       </div>
-      <div class="widget widget-resume window-shell widget-shell" data-window="resume-widget" data-window-label="Resume">
+      <div class="widget widget-music window-shell widget-shell" data-window="music" data-window-label="Apple Music">
         <div class="window-titlebar">
-          <span class="window-title">Resume</span>
+          <span class="window-title">Apple Music</span>
         </div>
-        <div class="window-body widget-body" style="display: flex; flex-direction: column; gap: 8px;">
-          <button id="view-resume-btn" class="btn ghost" style="flex: 0 0 50%;">View PDF</button>
+        <div class="window-body widget-body music-widget">
+          <div class="music-header">
+            <span class="music-badge">♪</span>
+            <div class="music-meta">
+              <div class="music-title">Apple Music Profile</div>
+              <div class="music-artist">Follow what I’m listening to</div>
+            </div>
+          </div>
+          <div class="music-actions">
+            <a class="btn" id="music-connect-btn" href="https://music.apple.com/profile/jamescloud" target="_blank" rel="noreferrer">Open Profile</a>
+          </div>
         </div>
       </div>
     </aside>

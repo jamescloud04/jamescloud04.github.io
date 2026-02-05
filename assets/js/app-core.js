@@ -29,12 +29,16 @@
     },
     openWindow(windowEl) {
       if (!windowEl) return;
-      this.getMainWindows().forEach((el) => {
-        if (el !== windowEl) {
-          el.classList.add("window-hidden");
-        }
-      });
+      const isStacked = windowEl.dataset.stack === "true";
+      if (!isStacked) {
+        this.getMainWindows().forEach((el) => {
+          if (el !== windowEl) {
+            el.classList.add("window-hidden");
+          }
+        });
+      }
       windowEl.classList.remove("window-hidden", "window-minimized");
+      this.setActiveTaskbar(windowEl.dataset.window);
     },
     openWindowById(id) {
       this.openWindow(this.getWindow(id));
@@ -42,6 +46,12 @@
     closeWindow(windowEl) {
       if (!windowEl) return;
       windowEl.classList.add("window-hidden");
+      if (windowEl.dataset.window === "portfolio") {
+        const container = document.querySelector("main.container");
+        if (container) {
+          container.scrollTop = 0;
+        }
+      }
       const anyVisible = this.getMainWindows().some(
         (el) => !el.classList.contains("window-hidden") && !el.classList.contains("window-minimized")
       );

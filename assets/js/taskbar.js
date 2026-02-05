@@ -25,15 +25,13 @@
         const isHidden = item.el.classList.contains("window-hidden");
         if (isMinimized || isHidden) {
           Desktop.openWindow(item.el);
+          if (item.el.id === "projects-window") {
+            Desktop.ensureReposLoaded();
+          }
+          setActive(item.id);
         } else {
           Desktop.closeWindow(item.el);
-          setActive("portfolio");
-          return;
         }
-        if (item.el.id === "projects-window") {
-          Desktop.ensureReposLoaded();
-        }
-        setActive(item.id);
       });
       container.appendChild(btn);
       buttons.set(item.id, btn);

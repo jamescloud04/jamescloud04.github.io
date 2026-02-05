@@ -10,16 +10,17 @@
     if (!toggleBtn || !widgetsContainer || !mainContainer) return;
 
     let widgetsVisible = true;
+    let autoHiddenByResize = false;
 
     const updateToggleText = () => {
       toggleBtn.textContent = widgetsVisible ? "Hide Widgets" : "Show Widgets";
     };
 
-    toggleBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      widgetsVisible = !widgetsVisible;
+    const setWidgetsVisibility = (visible, isAutoHide = false) => {
+      widgetsVisible = visible;
+      autoHiddenByResize = isAutoHide;
       
-      if (widgetsVisible) {
+      if (visible) {
         widgetsContainer.style.display = "";
         mainContainer.classList.remove("widgets-hidden");
       } else {
@@ -28,8 +29,28 @@
       }
       
       updateToggleText();
+    };
+
+    const checkScreenSize = () => {
+      const width = window.innerWidth;
+      const shouldHideWidgets = width < 720;
       
+      if (shouldHideWidgets) {
+        setWidgetsVisibility(false, true);
+      } else {
+        setWidgetsVisibility(true, false);
+      }
+    };
+
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      autoHiddenByResize = false;
+      setWidgetsVisibility(!widgetsVisible, false);
       startMenu.setAttribute("aria-hidden", "true");
     });
+
+    // Check on load and resize
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
   });
 })();

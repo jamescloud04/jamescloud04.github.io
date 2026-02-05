@@ -333,17 +333,18 @@
 
 /* CRT monitor flicker effect on body */
 body {
-  background: linear-gradient(180deg, #3b6cb7 0%, #5a8fde 35%, #9cc5ff 70%, #c8d8ef 100%);
-  background-color: #5a8fde;
-  background-image:
-    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 45%),
-    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 40%),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 3px);
-  background-repeat: no-repeat, no-repeat, repeat;
-  background-size: cover, cover, auto;
-  background-position: center, center, top left;
-  background-blend-mode: screen, normal, normal;
-  animation: crtFlicker 0.15s infinite, skyShift 20s ease-in-out infinite;
+  background: #3b6cb7;
+  background-color: #3b6cb7;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.04) 0,
+    rgba(255, 255, 255, 0.04) 1px,
+    rgba(0, 0, 0, 0.03) 1px,
+    rgba(0, 0, 0, 0.03) 2px
+  );
+  background-size: 2px 2px;
+  background-attachment: initial;
+  animation: none;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
@@ -421,6 +422,40 @@ h2, h3, h4 {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .widget .window-titlebar {
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    margin: 0;
+  }
+
+  .widget {
+    padding-top: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .widgets {
+    gap: 20px;
+    width: 100%;
+  }
+
+  .widget-calendar,
+  .widget-weather,
+  .widget-sysinfo {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.home-page .widgets .widget.window-shell {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 
 .widget-clock .widget-body {

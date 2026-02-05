@@ -16,7 +16,8 @@
 
 html {
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: 100%;
 }
 
@@ -26,14 +27,15 @@ html {
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   font-family: "Segoe UI", "Tahoma", "Helvetica Neue", Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   letter-spacing: -0.01em;
   line-height: 1.6;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   transition: background var(--transition), color var(--transition);
 }
 
@@ -48,7 +50,8 @@ body.home-page main.container {
   padding: 12px 24px;
   gap: 20px;
   width: 100%;
-  height: calc(100vh - 28px - 24px);
+  height: auto;
+  min-height: calc(100vh - 28px - 24px);
   overflow-x: clip;
   overflow-y: auto;
   position: relative;
@@ -236,34 +239,6 @@ body.home-page main.container.widgets-hidden {
   gap: 0;
 }
 
-body.home-page .retro-3d {
-  position: absolute;
-  top: 12px;
-  bottom: 12px;
-  left: 24px;
-  right: calc(24px + 320px + 20px);
-  width: auto;
-  height: auto;
-  border-radius: 8px;
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.06));
-  z-index: 0;
-}
-
-body.home-page main.container.show-3d .retro-3d {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-body.home-page .retro-3d canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
 
 .about-section {
   padding: 0.75rem;
@@ -596,6 +571,16 @@ body.home-page .retro-3d canvas {
     height: auto;
   }
 
+  body.home-page main.container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .main-column {
+    width: 100%;
+  }
+
   .window-shell {
     position: static !important;
     width: 100% !important;
@@ -604,15 +589,40 @@ body.home-page .retro-3d canvas {
     resize: none;
   }
 
+  body.home-page .window-resume {
+    position: static !important;
+    inset: auto !important;
+    height: calc(100vh - 28px - 24px) !important;
+    min-height: calc(100vh - 28px - 24px) !important;
+  }
+
+  body.home-page .window-resume .window-body {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .widget.window-shell,
+  .widgets .widget {
+    position: relative !important;
+  }
+
   .widgets {
     position: static;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: 100% !important;
   }
 
   .widget-shell {
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .widgets .widget {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
   }
 
   .taskbar {
@@ -687,6 +697,9 @@ body.home-page .retro-3d canvas {
 
 .repo-item {
   padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   border: 2px solid;
   border-color: #dfdfdf #808080 #808080 #dfdfdf;
   border-radius: 6px;
@@ -714,7 +727,7 @@ body.home-page .retro-3d canvas {
 }
 
 .repo-item h4 {
-  margin: 0 0 0.5rem 0;
+  margin: 0;
   font-size: 1.05rem;
   color: #0a246a;
   display: flex;
@@ -722,6 +735,20 @@ body.home-page .retro-3d canvas {
   gap: 0.5rem;
   flex-wrap: wrap;
   font-weight: 600;
+}
+
+.repo-item p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.repo-item .repo-language,
+.repo-item .repo-meta,
+.repo-item .repo-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  align-items: center;
 }
 
 .repo-item h4 a {

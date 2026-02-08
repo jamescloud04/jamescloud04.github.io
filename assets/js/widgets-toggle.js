@@ -32,14 +32,8 @@
     };
 
     const checkScreenSize = () => {
-      const width = window.innerWidth;
-      const shouldHideWidgets = width < 720;
-      
-      if (shouldHideWidgets) {
-        setWidgetsVisibility(false, true);
-      } else {
-        setWidgetsVisibility(true, false);
-      }
+      // Widgets no longer autohide on mobile devices
+      // User can manually toggle if needed
     };
 
     toggleBtn.addEventListener("click", (e) => {
